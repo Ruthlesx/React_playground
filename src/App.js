@@ -313,15 +313,19 @@ function App() {
           //2. creating instance of createContext
 
           export const Data = createContext()
+          export const Data1 = createContext()
 
           function App() {
-            const name = 'Alex Micheal'
+            const name = 'Alexa Micheal'
+            const age = 24
 
             return (
               //3. Wrap our component into Provider Component
             <>
             <Data.Provider value={name}>
-              <ComponentC />
+              <Data1.Provider value={age}>
+                 <ComponentC />
+              </Data1.Provider>
             </Data.Provider>
             
             </>
