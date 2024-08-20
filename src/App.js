@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import React from 'react';
 import './index.css'
-import {useEffect, useState} from 'react';
+//import {useEffect, useState} from 'react';
+import {createContext} from 'react';
+import ComponentC from './ComponentC';
 //import User from './User'
 //import Main from './main '
 //import ReactDOMServer from 'react-dom/server'
@@ -201,7 +203,7 @@ function App() {
       </>
     )
   }
-    *
+    
 
   function App() {
 
@@ -280,7 +282,7 @@ function App() {
             
             </>
         )
-      } */
+      } 
 
 
         function App () {
@@ -306,7 +308,25 @@ function App() {
             </ul>
             </>
           )
-        }
+        } */
+
+          //2. creating instance of createContext
+
+          export const Data = createContext()
+
+          function App() {
+            const name = 'Alex Micheal'
+
+            return (
+              //3. Wrap our component into Provider Component
+            <>
+            <Data.Provider value={name}>
+              <ComponentC />
+            </Data.Provider>
+            
+            </>
+            )
+          }
 
 
 
