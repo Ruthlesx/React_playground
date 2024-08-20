@@ -27,7 +27,7 @@ import { Data, Data1 } from './App'
   )
 }*/ 
 
-const ComponentC = () => {
+/*const ComponentC = () => {
   const Uname = useContext(Data)
   const Uage = useContext(Data1)
   return (
@@ -36,4 +36,4 @@ const ComponentC = () => {
   )
 }
 
-export default ComponentC 
+export default ComponentC */

@@ -1,4 +1,4 @@
-const ComponentB = () => {
+/*const ComponentB = () => {
   
   return (
     <div>
@@ -7,4 +7,4 @@ const ComponentB = () => {
   )
 }
 
-export default ComponentB
+export default ComponentB */

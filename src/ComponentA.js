@@ -1,5 +1,5 @@
 
-
+/*
 const ComponentA = () => {
   
   return (
@@ -9,4 +9,4 @@ const ComponentA = () => {
   )
 }
 
-export default ComponentA
+export default ComponentA */
