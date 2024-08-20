@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import React from 'react';
 import './index.css'
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 //import User from './User'
 //import Main from './main '
 //import ReactDOMServer from 'react-dom/server'
@@ -116,7 +116,7 @@ const Password = ({isValid}) => {
   }
 
 
-*/
+
 
 
 
@@ -142,14 +142,174 @@ const Counter = () => {
   <button onClick={decrement}>-</button>
  </>
  )
-}
+} 
 
+function App() {
+  const [friends, setFriends] = useState(["Alex", "Obi"])
 
-  function App() {
-    return <>
-    <Counter/>
-    </>
-    
+  const addOne = () => {
+    setFriends([ ...friends,"ola"])
   }
 
-export default App;
+  const removeOne = () => {
+    setFriends(friends.filter((f) => f!== "Alex"))
+ 
+
+  }
+
+  const updateOne = () => {
+    setFriends(friends.map((f) => (f === "Alex" ? "Alex Smith" : f)))
+
+  }
+
+  return (
+    <>
+    {friends.map((f) => (<li key={Math.random()}>{f}</li>))}
+
+
+    <button onClick={addOne}> Add One</button>
+    <button onClick={removeOne}> Remove One</button>
+    <button onClick={updateOne}> Update One</button>
+    </>
+
+   
+  
+} 
+
+  function App() {
+
+    const [movie, setMovie] = useState({
+      title: "Inside Out 2",
+      ratings: 9
+    })
+
+    const handleClick = () => {
+      const copyMovie = {
+        ...movie,
+        ratings: 5,
+      }
+
+      setMovie(copyMovie)
+    }
+
+    return (
+
+      <> 
+      <h1>{movie.title}</h1>
+      <p>Rating: {movie.ratings}</p>
+      <button onClick={handleClick}>Change Rating</button>
+      </>
+    )
+  }
+    *
+
+  function App() {
+
+    const [movies, setMovies] = useState([
+      {id: 1, title: "SpiderMan", ratings: 7.4 },
+      {id: 2, title: "SuperMan", ratings: 8.9},
+      {id: 3, title: "BatMan", ratings: 7.9},
+    ])
+
+    const handleClick = () => {
+      setMovies(
+        movies.map((m) => (m.id === 3 ? {...movies, title: "John Wick 4"} : m) )
+      )
+    }
+
+    return (
+      <>
+      {movies.map((movie) => (
+        <li key={Math.random()}>{movie.title}</li>
+      ))}
+
+      <button onClick={handleClick}>Change Name</button>
+
+      </>
+    )
+  } 
+
+    function App () {
+
+      const [username, setUsername] = useState('')
+
+      const handleChange = (event) => {
+        setUsername(event.target.value)
+      }
+
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        alert(`You typed ${username}`)
+        setUsername('')
+
+      }
+
+      return (
+        <>
+        <h1>Form Demo</h1>
+        <form onSubmit={handleSubmit}>
+          <input type="text" value={username} onChange={handleChange}/>
+          <button >Submit</button>
+        </form>
+        
+        </>
+      )
+    } 
+      
+    function App() {
+        const [value, setValue] = useState(0)
+
+        //3 things that happeen in useEffect()
+        
+        // 1. Render for the (first time)
+        // 2. Anytime we do (side effect)
+        // 3. Dependency List/Array
+        
+        useEffect(() => {
+          console.log("Hello")
+          document.title = `increment(${value})`
+      }, [value])
+
+        return (
+          <>
+          <h1>
+            {value}
+          </h1>
+
+          <button onClick={() => setValue(value + 1)} >+</button>
+            
+            </>
+        )
+      } */
+
+
+        function App () {
+
+          const [data, setData] = useState([])
+
+          useEffect(() => {
+            async function getData() {
+              const response = await fetch ("https://jsonplaceholder.typicode.com/posts")
+              const data = await response.json();
+              if (data && data.length) setData(data)
+            } 
+
+            getData()
+          }, [])
+
+          return (
+            <>
+            <ul>
+            {data.map((item) => (
+              <li key={Math.random()}>{item.title}</li>
+            ))}  
+            </ul>
+            </>
+          )
+        }
+
+
+
+
+export default App
+ 
