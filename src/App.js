@@ -1,9 +1,10 @@
 import logo from './logo.svg';
-import React from 'react';
+//import React, { useState } from 'react';
 import './index.css'
 //import {useEffect, useState} from 'react';
 import {createContext} from 'react';
-import { useReducer } from 'react';
+import { useReducer, useRef } from 'react';
+import {useFetch} from './useFetch'
 //import ComponentC from './ComponentC';
 //import User from './User'
 //import Main from './main '
@@ -333,7 +334,7 @@ function App() {
             </>
             )
           }
-            */
+            
 
           function App() {
 
@@ -377,7 +378,50 @@ function App() {
             </>
             )
 
-          }  
+          } 
+
+            function App() {
+
+              const inputElement = useRef(null);
+              
+              const focusInput = () => {
+                inputElement.current.focus();
+                inputElement.current.value = 'Micheal'
+              }
+
+              return (
+                <>
+                <input type="text" ref={inputElement}/>
+                <button onClick={() => focusInput()}>Focus and write Micheal</button>
+                </>
+              )
+            }
+              */
+
+
+            function App() {
+              //const [data, setData] = useState(null)
+
+              const [data] = useFetch("https://jsonplaceholder.typicode.com/todos")
+
+             /* useEffect(() => {
+                fetch("https://jsonplaceholder.typicode.com/todos")
+                .then((r) => r.json())
+                .then((d) => setData(d))
+              }) */
+
+              return (
+                <>
+                {data && data.map((item) => {
+                  return (
+                    <p key={item.id}>{item.title}</p>
+                  )
+                })}
+                </>
+              )
+
+
+            }
 
 
 
