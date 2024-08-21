@@ -5,6 +5,7 @@ import './index.css'
 import {createContext} from 'react';
 import { useReducer, useRef } from 'react';
 import {useFetch} from './useFetch'
+import Counter from './Counter'
 //import ComponentC from './ComponentC';
 //import User from './User'
 //import Main from './main '
@@ -396,7 +397,7 @@ function App() {
                 </>
               )
             }
-              */
+              
 
 
             function App() {
@@ -408,7 +409,7 @@ function App() {
                 fetch("https://jsonplaceholder.typicode.com/todos")
                 .then((r) => r.json())
                 .then((d) => setData(d))
-              }) */
+              }) 
 
               return (
                 <>
@@ -421,7 +422,18 @@ function App() {
               )
 
 
-            }
+            }*/
+
+
+              function App() {
+
+                return (
+                  <>
+                  <Counter/>
+                  </>
+                )
+
+              }
 
 
 
